@@ -1,5 +1,5 @@
-class BookController < ApplicationController
-  def new
+class BooksController < ApplicationController
+  def index
     # Book.allはテーブルに保存されたデータを全取得する
     @book = Book.new
     @books = Book.all
@@ -14,9 +14,6 @@ class BookController < ApplicationController
     @book.user_id = current_user.id
     @book.save
     redirect_to book_path
-  end
-
-  def index
   end
 
   def show
