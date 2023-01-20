@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root to: "homes#top"
+
   devise_for :users
+  root to: "homes#top"
 
 # resources メソッドは、ルーティングを一括して自動生成してくれる機能
 # onlyオプションを使用することで、生成するルーティングを限定することができます。この場合、only の後に配列で記述されている"new","index","show"のアクション以外は、ルーティングが行われません。

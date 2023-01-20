@@ -5,8 +5,8 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
- # 投稿データの保存
   def create
+# 投稿データの保存
     @book = Book.new(book_params)
 # current_user.name : 今ログインしているユーザーのIDを表示
 # current_user.name : 今ログインしているユーザーの名前を表示
@@ -28,6 +28,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:shop_name, :image, :caption)
+                                    # ↓？？？↓
+    params.require(:book).permit(:title, :body)
   end
 end
