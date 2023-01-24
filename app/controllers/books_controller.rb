@@ -3,12 +3,13 @@ class BooksController < ApplicationController
     # Book.allはテーブルに保存されたデータを全取得する
     @book = Book.new
     @books = Book.all
+    @user = current_user
   end
 
   def create
 # 投稿データの保存
     @book = Book.new(book_params)
-# current_user.name : 今ログインしているユーザーのIDを表示
+# current_user.id : 今ログインしているユーザーのIDを表示
 # current_user.name : 今ログインしているユーザーの名前を表示
 # current_user.email : 今ログインしているユーザーのメールアドレスを表示
     @book.user_id = current_user.id
