@@ -13,7 +13,7 @@ class BooksController < ApplicationController
 # current_user.email : 今ログインしているユーザーのメールアドレスを表示
     @book.user_id = current_user.id
     @book.save
-    redirect_to book_path
+    redirect_to book_path(@book.id)
   end
 
   def show
@@ -32,9 +32,7 @@ class BooksController < ApplicationController
 
   # 投稿データのストロングパラメータ
   private
-
   def book_params
-                                    # ↓？？？↓
-    params.require(:book).permit(:shop_name, :image, :caption)
+    params.require(:book).permit(:title, :body)
   end
 end
