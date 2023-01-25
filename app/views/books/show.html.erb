@@ -1,9 +1,14 @@
-<%= render 'books/template', user:@user %>
+<%= render 'books/template', user: @user %>
+
+<h1>Book detail</h1>
+<table>
+  <tr>
+    <th></th>
+      <td>
+      </td>
+  </tr>
+  <tr>
+
+  </tr>
+</table>
 <div>
-  <p>ショップ名：<%= @book.title %></p>
-  <p>説明：<%= @book.body %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
-</div>

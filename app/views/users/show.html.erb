@@ -1,17 +1,32 @@
 <!-- ユーザーの詳細 -->
-
-<%= render 'books/template', user:@user %>
+<%= render 'books/template', user: @user %>
 
 <!-- ユーザーの投稿一覧 -->
 
-<% @books.each do |book| %>
-<div class="row">
-  <%= link_to book_path(book.id) do %>
-  <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
+<h2>Books(Users→show)</h2>
+<table>
+  <% @books.each do |book| %>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= image_tag book.user.get_profile_image(100,100) %>
+      </td>
+      <td>
+        <%= link_to book_path(book.id) do %>
+        <%= book.title %>
+        <% end %>
+      </td>
+      <td>
+        <%= book.body %>
+      </td>
+    </tr>
+  </tbody>
   <% end %>
-
-  <p>ショップ名：<%= book.title %></p>
-  <p>説明：<%= book.body %></p>
-  <p>name：<%= book.user.name %></p>
-</div>
-<% end %>
+</table>

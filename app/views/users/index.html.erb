@@ -1,8 +1,25 @@
-<%= render 'books/template', user:@user %>
+<%= render 'books/template', user: @user %>
 
-<% @users.each do |user| %>
-<div>
-  <%= image_tag user.get_profile_image(100, 100) %>
-  <p>ユーザーネーム：<%= user.name %></p>
-</div>
-<% end %>
+<h2>Users</h2>
+<table>
+  <% @users.each do |user| %>
+ <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= image_tag user.get_profile_image(100, 100) %></td>
+      <td><%= user.name %></td>
+      <td>
+        <%= link_to user_path(user.id) do %>
+        show
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

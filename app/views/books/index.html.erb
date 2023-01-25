@@ -1,14 +1,31 @@
-<%= render 'books/template', user:@user %>
+<%= render 'books/template', user: @user %>
 
-<% @books.each do |book| %>
-<div>
-  <%= link_to book_path(book.id) do %>
-    <%= image_tag @user.get_profile_image(100, 100) %>
+<h2>Books</h2>
+<table>
+  <% @books.each do |book| %>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to user_path(book.user_id) do %>
+        <%= image_tag book.user.get_profile_image(100, 100) %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to book_path(book.id) do %>
+        <%= book.title %>
+        <% end %>
+      </td>
+      <td>
+        <%= book.body %>
+      </td>
+    </tr>
+  </tbody>
   <% end %>
-
-  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
-  <p>ショップ名：<%= book.title %></p>
-  <p>説明：<%= book.body %></p>
-  <p>ユーザーネーム：<%= book.user.name %></p>
-</div>
-<% end %>
+</table>

@@ -1,10 +1,23 @@
 <!--部分テンプレート-->
 <h1>User info</h1>
-<h3><%= user.name %></h3>
-<h3><%= user.introduction %></h3>
- <% if user == current_user %>
-  <%= link_to 'edit', edit_user_path(current_user.id) %>
-<% end %>
+ <%= image_tag user.get_profile_image(100, 100) %>
+<table>
+ <tr>
+  <th>name</th>
+  <td><%= user.name %></td>
+ </tr>
+
+ <tr>
+  <th>introduction</th>
+  <td><%= user.introduction %></td>
+ </tr>
+ </table>
+ <p>
+  <% if user == current_user %>
+   <%= link_to 'edit', edit_user_path(current_user.id) %>
+  <% end %>
+ </p>
+
 
 <h1>New book</h1>
 <!-- form_with部分 -->
