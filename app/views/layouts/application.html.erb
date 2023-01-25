@@ -3,6 +3,7 @@
   <head>
     <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://kit.fontawesome.com/6a0a4dcc4e.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,32 +13,41 @@
 
   <body>
     <header>
+      <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
       <% if user_signed_in? %>
         <div>
         <%= link_to 'Bookers', root_path %>
         </div>
         <li>
-        <%= link_to 'Home', user_path(current_user.id) %>
+          <i class="fa-solid fa-house-chimney"></i>
+          <%= link_to 'Home', user_path(current_user.id) %>
         </li>
         <li>
-        <%= link_to 'User', users_path%>
+          <i class="fa-solid fa-users"></i>
+          <%= link_to 'User', users_path%>
         </li>
         <li>
-        <%= link_to 'Books', books_path %>
+          <i class="fa-solid fa-book-open"></i>
+          <%= link_to 'Books', books_path %>
         </li>
         <li>
-        <%= link_to 'About', about_path %>
+          <i class="fa-solid fa-link"></i>
+          <%= link_to 'About', about_path %>
         </li>
         <li>
+          <i class="fa-solid fa-right-from-bracket"></i>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
         <li>
+          <i class="fa-solid fa-user-plus"></i>
           <%= link_to "Sign up", new_user_registration_path %>
         </li>
         <li>
+          <i class="fa-solid fa-right-to-bracket"></i>
           <%= link_to "Log in", new_user_session_path %>
         </li>
+        <div class="social"></div>
       <% end %>
     </header>
     <%= yield %>
