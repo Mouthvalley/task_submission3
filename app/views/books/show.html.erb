@@ -18,6 +18,14 @@
       <td>
         <%= book.body %>
       </td>
+      <td>
+        <%= link_to edit_book_path(book.id) do %>
+        edit
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </td>
     </tr>
   </tbody>
    <% end %>
