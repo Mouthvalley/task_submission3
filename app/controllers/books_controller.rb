@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+
   def index
     # Book.allはテーブルに保存されたデータを全取得する
     @book = Book.new
@@ -56,5 +58,12 @@ class BooksController < ApplicationController
   private
   def book_params
     params.require(:book).permit(:title, :body)
+  end
+
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    unless user_id == current_user.id
+      redirect_to book_path(book.id)
+    end
   end
 end
