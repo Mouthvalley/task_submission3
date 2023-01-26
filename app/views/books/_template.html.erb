@@ -1,36 +1,39 @@
 <!--部分テンプレート-->
-
-<h1>User info</h1>
- <%= image_tag user.get_profile_image(100, 100) %>
-<table>
- <tr>
-  <th>name</th>
-  <td><%= user.name %></td>
- </tr>
-
- <tr>
-  <th>introduction</th>
-  <td><%= user.introduction %></td>
- </tr>
- </table>
+<div class="col-md-3">
+  <h1>User info</h1>
+   <%= image_tag user.get_profile_image(100, 100) %>
+  <table class="table">
+   <tbody>
+    <tr>
+      <th>name</th>
+      <td><%= user.name %></td>
+     </tr>
+     <tr>
+      <th>introduction</th>
+      <td><%= user.introduction %></td>
+     </tr>
+   </tbody>
+  </table>
+  <div class="row">
  <script src="https://kit.fontawesome.com/6a0a4dcc4e.js" crossorigin="anonymous"></script>
- <p>
-  <% if user == current_user %>
-   <i class="fa-solid fa-user-gear"></i>
-   <%= link_to 'edit', edit_user_path(current_user.id) %>
-  <% end %>
- </p>
-  <div class="social"></div>
-
-
-<h1>New book</h1>
+ <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
+  <i class="fa-solid fa-user-gear"></i>
+ <% end %>
+</div>
+ <div class="social"></div>
+ <h1>New book</h1>
 <!-- form_with部分 -->
-<%= form_with model: Book.new do |f| %>
-  <h4>Title</h4>
-  　<%= f.text_field :title %>
-
-  <h4>Opinion</h4>
-  　<%= f.text_area :body %>
-
-  <%= f.submit 'Create Book' %>
-<% end %>
+  <%= form_with model: Book.new do |f| %>
+   <div class="form-group">
+    <label for="book_title">Title</label>
+    <%= f.text_field :title, class:"form-control book_title" %>
+   </div>
+   <div class="form-group">
+    <label for="book_opinion">Opinion</label>
+    <%= f.text_area :body, class:"form-control book_body"%>
+   </div>
+   <div class="form-group">
+    <%= f.submit 'Create Book' %>
+   </div>
+  <% end %>
+</div>

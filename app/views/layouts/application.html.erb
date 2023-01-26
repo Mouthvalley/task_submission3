@@ -13,74 +13,74 @@
 
   <body>
     <header>
-      <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-      <% if user_signed_in? %>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-           <%= link_to 'Bookers', root_path, class:"navbar-brand"%>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-          <nav class="navbar-brand:hover">
-          <ul class="navbar-nav ml-auto">
-
-          <!--link_to do ~ end の中に[アイコン]と[文字]を入れることで一つのオブジェクトとなる-->
-          <!--また、link_to (), class:"" do でクラスを指定できる-->
-          <li>
-            <%= link_to user_path(current_user.id) do %>
-            <i class="fa-solid fa-house-chimney">Home</i>
-            <% end %>
-          </li>
-
-          <li>
-            <i class="fa-solid fa-users"></i>
-            <%= link_to 'User', users_path%>
-          </li>
-          <li>
-            <i class="fa-solid fa-book-open"></i>
-            <%= link_to 'Books', books_path %>
-          </li>
-          <li>
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-          </li>
-
-          </nav>
-          </ul>
-        </div>
+          <%= link_to 'Bookers', root_path, class:"navbar-brand"%>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+              <!--link_to do ~ end の中に[アイコン]と[文字]を入れることで一つのオブジェクトとなる-->
+              <!--また、link_to (), class:"" do でクラスを指定できる-->
+              <li>
+                <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
+                <i class="fa-solid fa-house-chimney">Home</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-users">Users</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to books_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-book-open">Books</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-right-from-bracket">Log out</i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
-
       <% else %>
-            <li>
-             <i class="fa-solid fa-house-chimney"></i>
-              <%= link_to 'Home', root_path %>
-            </li>
-            <li>
-            <i class="fa-solid fa-link"></i>
-              <%= link_to 'About', about_path %>
-            </li>
-            <li>
-              <i class="fa-solid fa-user-plus"></i>
-              <%= link_to "Sign up", new_user_registration_path %>
-            </li>
-            <li>
-              <i class="fa-solid fa-right-to-bracket"></i>
-              <%= link_to "Log in", new_user_session_path %>
-            </li>
-
-        <div class="social"></div>
+              <li>
+                <%= link_to root_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-house-chimney">Home</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to about_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-link">About</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-user-plus">Sign up</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-right-to-bracket">Log in in</i>
+                <% end %>
+              </li>
+      <div class="social"></div>
       <% end %>
     </header>
     <%= yield %>
 
     <footer>
-      <div>
+      <div class="container mt-5">
         <div class="row">
-    		  <p>CopyRight Infratop.inc</p>
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
         </div>
       </div>
     </footer>
