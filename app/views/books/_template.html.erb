@@ -1,6 +1,7 @@
 <!--部分テンプレート-->
+<p id="notice"></p>
 <div class="col-md-3">
-  <h1>User info</h1>
+  <h2>User info</h2>
    <%= image_tag user.get_profile_image(100, 100) %>
   <table class="table">
    <tbody>
@@ -15,13 +16,13 @@
    </tbody>
   </table>
   <div class="row">
- <script src="https://kit.fontawesome.com/6a0a4dcc4e.js" crossorigin="anonymous"></script>
- <%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
-  <i class="fa-solid fa-user-gear"></i>
- <% end %>
-</div>
- <div class="social"></div>
- <h1>New book</h1>
+   <!--<script src="https://kit.fontawesome.com/6a0a4dcc4e.js" crossorigin="anonymous"></script>-->
+    <%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear"></i>
+    <% end %>
+  </div>
+
+ <h2 class="mt-3">New book</h2>
 <!-- form_with部分 -->
   <%= form_with model: Book.new do |f| %>
    <div class="form-group">
