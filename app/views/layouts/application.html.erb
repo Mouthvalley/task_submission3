@@ -2,12 +2,12 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://kit.fontawesome.com/6a0a4dcc4e.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,45 +15,59 @@
     <header>
       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
       <% if user_signed_in? %>
-        <div>
-        <%= link_to 'Bookers', root_path %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+           <%= link_to 'Bookers', root_path %>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+          <nav class="navbar-brand:hover">
+          <ul class="navbar-nav ml-auto">
+
+          <li>
+            <i class="fa-solid fa-house-chimney"></i>
+            <%= link_to 'Home', user_path(current_user.id) %>
+          </li>
+          <li>
+            <i class="fa-solid fa-users"></i>
+            <%= link_to 'User', users_path%>
+          </li>
+          <li>
+            <i class="fa-solid fa-book-open"></i>
+            <%= link_to 'Books', books_path %>
+          </li>
+          <li>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          </li>
+
+          </nav>
+          </ul>
         </div>
-        <li>
-          <i class="fa-solid fa-house-chimney"></i>
-          <%= link_to 'Home', user_path(current_user.id) %>
-        </li>
-        <li>
-          <i class="fa-solid fa-users"></i>
-          <%= link_to 'User', users_path%>
-        </li>
-        <li>
-          <i class="fa-solid fa-book-open"></i>
-          <%= link_to 'Books', books_path %>
-        </li>
-        <li>
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
+        </div>
+      </nav>
+
       <% else %>
-        <div>
-        <%= link_to 'Bookers', root_path %>
-        </div>
-        <li>
-         <i class="fa-solid fa-house-chimney"></i>
-          <%= link_to 'Home', root_path %>
-        </li>
-        <li>
-        <i class="fa-solid fa-link"></i>
-          <%= link_to 'About', about_path %>
-        </li>
-        <li>
-          <i class="fa-solid fa-user-plus"></i>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <i class="fa-solid fa-right-to-bracket"></i>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
+            <li>
+             <i class="fa-solid fa-house-chimney"></i>
+              <%= link_to 'Home', root_path %>
+            </li>
+            <li>
+            <i class="fa-solid fa-link"></i>
+              <%= link_to 'About', about_path %>
+            </li>
+            <li>
+              <i class="fa-solid fa-user-plus"></i>
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <li>
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <%= link_to "Log in", new_user_session_path %>
+            </li>
+
         <div class="social"></div>
       <% end %>
     </header>
