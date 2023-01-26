@@ -17,7 +17,7 @@
       <% if user_signed_in? %>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-           <%= link_to 'Bookers', root_path %>
+           <%= link_to 'Bookers', root_path, class:"navbar-brand"%>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -27,10 +27,14 @@
           <nav class="navbar-brand:hover">
           <ul class="navbar-nav ml-auto">
 
+          <!--link_to do ~ end の中に[アイコン]と[文字]を入れることで一つのオブジェクトとなる-->
+          <!--また、link_to (), class:"" do でクラスを指定できる-->
           <li>
-            <i class="fa-solid fa-house-chimney"></i>
-            <%= link_to 'Home', user_path(current_user.id) %>
+            <%= link_to user_path(current_user.id) do %>
+            <i class="fa-solid fa-house-chimney">Home</i>
+            <% end %>
           </li>
+
           <li>
             <i class="fa-solid fa-users"></i>
             <%= link_to 'User', users_path%>

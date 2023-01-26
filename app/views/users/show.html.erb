@@ -1,8 +1,12 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <!-- ユーザーの詳細 -->
 <%= render 'books/template', user: @user %>
 
 <!-- ユーザーの投稿一覧 -->
-<h2>Books(Users→show)</h2>
+<h2>Books</h2>
 <table>
   <% @books.each do |book| %>
   <thead>
