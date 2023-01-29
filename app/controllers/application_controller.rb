@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   # devise利用の機能（ユーザ登録、ログイン認証など）が使われる前にconfigure_permitted_parametersメソッドが実行される
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # authenticate_user：ログインしているかどうか
+  before_action :authenticate_user!, except: [:top, :about]
 
 # カリキュラム11章
   def after_sign_up_path_for(resource)
