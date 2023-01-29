@@ -32,6 +32,7 @@ class BooksController < ApplicationController
     @user = @book.user
     # ユーザーが持っている本すべて
     @books = @user.books
+    # @user = current_user
   end
 
   def edit
