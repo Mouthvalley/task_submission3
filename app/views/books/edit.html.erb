@@ -25,11 +25,9 @@
       <div class="form-group">
         <%= f.submit 'Update Book' %>
       </div>
-        <%= link_to book_path(@book.id) do %>
-        Show
-        <% end %>
+        <%= link_to "Show", book_path(@book.id) %>
         |
-        <%= link_to 'Back', books_path %>
+        <%= link_to "Back", books_path %>
       <% end %>
     </div>
   </div>

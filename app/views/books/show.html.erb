@@ -8,25 +8,25 @@
       <div class="col-md-8 offset-md-1">
         <h2>Book detail</h2>
         <table class="table">
-          <% @books.each do |book| %>
           <tbody>
             <tr>
               <td>
-                <%= link_to user_path(book.user_id) do %>
-                <%= image_tag book.user.get_profile_image(100, 100) %>
+                <%= link_to user_path(@user.id) do %>
+                <%= image_tag @user.get_profile_image(100, 100) %><br>
+                <%= @user.name %>
                 <% end %>
               </td>
               <td>
-                <%= link_to book_path(book.id) do %>
-                <%= book.title %>
+                <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
                 <% end %>
               </td>
               <td>
-                <%= book.body %>
+                <%= @book.body %>
               </td>
               <% if @book.user == current_user%>
               <td>
-                <%= link_to edit_book_path(book.id), class:"btn btn-sm btn-success" do %>
+                <%= link_to edit_book_path(@book.id), class:"btn btn-sm btn-success" do %>
                   Edit
                 <% end %>
               </td>
@@ -38,7 +38,6 @@
               <% end %>
             </tr>
           </tbody>
-           <% end %>
         </table>
     </div>
   </div>
